@@ -232,3 +232,31 @@ static List<string> RealizarBusquedaPorCriterio()
     int criterio = SeleccionarCriterio();
     return RealizarBusquedaIndividual(criterio);
 }
+
+static List<string> ObtenerArchivosDelDirectorio()
+{
+    string rutaDefinida = @"C:\TuCarpeta"; // Cambia por tu ruta deseada
+    
+    try
+    {
+        // Obtener todos los archivos recursivamente
+        string[] archivos = Directory.GetFiles(rutaDefinida, "*.*", SearchOption.AllDirectories);
+        
+        // Convertir a rutas relativas para mejor visualización
+        List<string> archivosRelativos = new List<string>();
+        foreach (string archivo in archivos)
+        {
+            // Obtener ruta relativa desde el directorio base
+            string relativa = archivo.Replace(rutaDefinida, "").TrimStart(Path.DirectorySeparatorChar);
+            archivosRelativos.Add(relativa);
+        }
+        
+        Console.WriteLine($"✅ Se encontraron {archivosRelativos.Count} archivos en: {rutaDefinida}");
+        return archivosRelativos;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"❌ Error al leer el directorio: {ex.Message}");
+        return new List<string>();
+    }
+}
