@@ -65,7 +65,7 @@ namespace Localgoogle
       Console.WriteLine("Seleccione la forma de buscar");
       Console.WriteLine("1. Operadores lógicos básicos");
       Console.WriteLine("2. Cuantificadores lógicos");
-      Console.WriteLine("3. Arbol de Directorios");
+      Console.WriteLine("3. Árbol de Directorios");
       Console.WriteLine("4. Salir");
 
       // Lee un número validado entre 1 y 4 (ver función LeerNumero)
@@ -90,16 +90,16 @@ namespace Localgoogle
     static void AplicarCuantificadores()
     {
       Console.Clear();
-      Console.WriteLine("Cuantidicadores Lógicos");
+      Console.WriteLine("Cuantificadores Lógicos");
       Console.WriteLine("1. Cuantificador universal           (∀)    Verificar propiedad para todos");
       Console.WriteLine("2. Cuantificador existencial         (∃)    Verificar si existe alguno");
       Console.WriteLine("3. Cuantificador de existencia única (∃!)   Verificar si existe exactamente uno");
-      Console.WriteLine("4. Volver al menu principal");
+      Console.WriteLine("4. Volver al menú principal");
 
       // Lee opción y valida entre 1 y 4
       double opcion = LeerNumero(
         Mensaje: "Seleccione el cuantificador: ",
-        MensajeError: "Seleccione una opción válida (1-5)",
+        MensajeError: "Seleccione una opción válida (1-4)",
         min: 1,
         max: 4
       );
@@ -138,7 +138,7 @@ namespace Localgoogle
       Console.WriteLine("3. Negación (!)           ¬ P(x)");
       Console.WriteLine("4. Implicación (! ||)       P(x)  -> Q(x)");
       Console.WriteLine("5. Doble implicación (==)   P(x) <-> Q(x)");
-      Console.WriteLine("6. Volver al menu principal");
+      Console.WriteLine("6. Volver al menú principal");
 
 
       // Lee la opción del usuario (1..6)
@@ -196,7 +196,7 @@ namespace Localgoogle
     static void AplicarCuantificadorUniversal(List<Archivo> archivos)
     {
       Console.WriteLine("Cuantificador Universal (∀)");
-      Console.WriteLine("Verificar si TODOS los archivos cumplen la propiedad");
+      Console.WriteLine("Verificar si TODOS los archivos cumplen la propiedad.");
 
       // El usuario elige el criterio (nombre, extensión, tamaño o fecha)
       int criterio = SeleccionarCriterio();
@@ -218,7 +218,7 @@ namespace Localgoogle
     static void AplicarCuantificadorExistencial(List<Archivo> archivos)
     {
       Console.WriteLine("Cuantificador existencial (∃)");
-      Console.WriteLine("Verificar si EXISTE AL MENOS UN archivo que cumple la propiedad");
+      Console.WriteLine("Verificar si EXISTE AL MENOS UN archivo que cumple la propiedad.");
 
       int criterio = SeleccionarCriterio();
       var propiedad = DefinirPropiedad(criterio);
@@ -249,8 +249,8 @@ namespace Localgoogle
     // Cuantificador de existencia única: verifica si existe exactamente 1 archivo que cumpla P(x)
     static void AplicarCuantificadorExistenciaUnica(List<Archivo> archivos)
     {
-      Console.WriteLine("Cuantificador de exitiancia único (∃!)");
-      Console.WriteLine("Verificar si EXISTE EXACTAMENTE UN archivo que cumple la propiedad");
+      Console.WriteLine("Cuantificador de existencia única (∃!)");
+      Console.WriteLine("Verificar si EXISTE EXACTAMENTE UN archivo que cumple la propiedad.");
 
       int criterio = SeleccionarCriterio();
       var propiedad = DefinirPropiedad(criterio);
@@ -413,8 +413,8 @@ namespace Localgoogle
         case 1:
           // Criterio por nombre: el usuario escribe una cadena y se verifica Contains (case-insensitive)
           string? nombre = LeerLetras(
-            Mensaje: "Ingrese nombre o parte de el: ",
-            MensajeError: "El nombre no puede estar vacío"
+            Mensaje: "Ingrese nombre o parte de él: ",
+            MensajeError: "El nombre no puede estar vacío."
             );
           // Retorna un lambda que verifica si el Nombre contiene la subcadena ingresada
           return a => a.Nombre?.Contains(nombre ?? "", StringComparison.OrdinalIgnoreCase) == true;
@@ -431,8 +431,8 @@ namespace Localgoogle
         case 3:
           // Criterio por tamaño mínimo: el usuario ingresa un número (bytes)
           double tamañoDouble = LeerNumero(
-              Mensaje: "Ingrese tamaño minimo en bytes: ",
-              MensajeError: "Debe ingresar un numero mayor o igual a cero.",
+              Mensaje: "Ingrese tamaño mínimo en bytes: ",
+              MensajeError: "Debe ingresar un número mayor o igual a cero.",
               min: 0
               );
           // Se compara el tamaño del archivo con el número ingresado
